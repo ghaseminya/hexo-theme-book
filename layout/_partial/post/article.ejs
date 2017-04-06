@@ -1,0 +1,37 @@
+<div class="twelve wide column">
+				<div class="pageHeader">
+					<div class="segment">
+						<h3 class="ui dividing header">
+  							<i class="large chat icon"></i>
+  							<div class="content">
+    							我的消息
+    							<div class="sub header">我的系统消息以及评论</div>
+  							</div>
+						</h3>
+					</div>
+				</div>
+<div id="main" class="<%= item.layout %>" itemscope itemprop="blogPost">
+  <% if (page.layout=='photo' && item.photos && item.photos.length){ %>
+    <%- partial('gallery') %>
+  <% } %>
+	<article itemprop="articleBody"> 
+		<%- partial('header') %>
+	<div class="article-content">
+		<% if( table&&(item.toc !== false) && theme.toc.article){ %>
+		<div id="toc" class="toc-article">
+			<strong class="toc-title"><%= __('contents') %></strong>
+		<% if(item.list_number == false) {%>
+		<%- toc(item.content,{list_number:false}) %>
+		<% }else{ %>
+			<%- toc(item.content) %>
+		<% } %>
+		</div>
+		<% } %>
+		<%- item.content %>  
+	</div>
+		<%- partial('footer') %>   	       
+	</article>
+	<%- partial('pagination') %>
+	<%- partial('comment') %>
+</div> 
+</div>  

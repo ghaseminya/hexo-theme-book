@@ -1,0 +1,111 @@
+<% if (page.layout=='post' || page.layout=='photo'){ %>
+ <%- partial('_partial/head') %>
+  <body>
+<div class="page">
+      <%- partial('_partial/header') %>
+<div class="container">
+		<div class="ui grid">
+      <%- partial('_partial/sidebar',{item: page,table: true}) %>
+      <%- body %>
+    </div>
+    </div>
+</div>
+    <footer><%- partial('_partial/footer') %></footer>
+    <%- partial('_partial/after_footer') %>
+  </body>
+</html>
+<% } else if(page.layout=='page'){ %>
+  <% if(page.source.match(/\.md$/)){ %>
+    <%- partial('_partial/head') %>
+      <body>
+        <div class="page">
+      <%- partial('_partial/header') %>
+<div class="container">
+		<div class="ui grid">
+          <%- body %>
+        </div>
+    </div>
+</div>
+        <footer><%- partial('_partial/footer') %></footer>
+        <%- partial('_partial/after_footer') %>
+      </body>
+     </html>
+     <% }else{ %>
+    <%- page.content %>
+  <% } %>
+<% } else if(page.layout=='search'){ %>
+<%- partial('_partial/head') %>
+    <body>
+      <header>
+        <%- partial('_partial/header') %>
+      </header>
+      <div id="container">
+        <%- partial('_partial/search')%>
+      </div>
+      <footer><%- partial('_partial/footer') %></footer>
+      <%- partial('_partial/after_footer') %>
+    </body>
+   </html>
+<% } else if(page.layout=='tags'){ %>
+ <%- partial('_partial/head') %>
+    <body>
+      <header>
+        <%- partial('_partial/header') %>
+      </header>
+      <div id="container">
+          <%- partial('_partial/tags')%>
+      </div>
+      <footer><%- partial('_partial/footer') %></footer>
+      <%- partial('_partial/after_footer') %>
+    </body>
+   </html>
+<% } else if(page.layout=='categories'){ %>
+ <%- partial('_partial/head') %>
+    <body>
+      <header>
+        <%- partial('_partial/header') %>
+      </header>
+      <div id="container">
+          <%- partial('_partial/categories')%>
+      </div>
+      <footer><%- partial('_partial/footer') %></footer>
+      <%- partial('_partial/after_footer') %>
+    </body>
+   </html>
+<% } else if(page.category!=null||page.tag!=null||page.archive!=null) { %>
+  <%- partial('_partial/head') %>
+    <body>
+      <div class="page">
+      <%- partial('_partial/header') %>
+<div class="container">
+		<div class="ui grid">
+  <%- partial('_partial/sidebar',{item: page,table: false}) %>  
+       <div class="twelve wide column">
+ <%- body %>
+     </div>
+      </div>
+</div>
+</div>
+      <footer><%- partial('_partial/footer') %></footer>
+      <%- partial('_partial/after_footer') %>
+    </body>
+   </html>
+<% } else { %>
+ <%- partial('_partial/head') %>
+  <body>
+   <div class="page">
+      <%- partial('_partial/header') %>
+<div class="container">
+		<div class="ui grid">
+ <%- partial('_partial/sidebar',{item: page,table: false}) %>     
+<div class="twelve wide column">
+ <%- body %>
+     </div>
+     </div>
+</div>
+    </div>
+    <footer><%- partial('_partial/footer') %></footer>
+    <%- partial('_partial/after_footer') %>
+  </body>
+ </html>
+<% } %>

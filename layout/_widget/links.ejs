@@ -1,0 +1,14 @@
+<div class="verticalMenu">
+  <p class="asidetitle"><%= __('links') %></p>
+    <div class="ui vertical pointing menu fluid">
+        <% for (var i in theme.links){ %>
+          
+            <% if(theme.links[i].indexOf(",") > 0) { %>
+            	<a class="item" href="<%- theme.links[i].split(",")[0] %>" target="_blank" title="<%- theme.links[i].split(",")[1] %>"><%= i %></a>
+            <% }else{ %>
+            	<a class="item" href="<%- theme.links[i] %>" target="_blank" title="<%= i %>"><%= i %></a>
+            <% } %>
+          
+        <% } %>
+    </div>
+</div>

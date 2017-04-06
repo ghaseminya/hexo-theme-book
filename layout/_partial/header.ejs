@@ -1,0 +1,48 @@
+<%
+function root_for(path){
+	path = path || '/'
+	var root = config.root;
+	if (path.substring(0, root.length) !== root){
+    if (path.substring(0, 1) === '/'){
+      path = root.substring(0, root.length - 1) + path;
+    } else {
+      path = root + path;
+    }
+  }
+  return path;
+}
+%>
+<header>
+<div class="bigcontainer">
+		<div id="logo">
+			<a href="./"><%= config.title %></a>
+		</div>
+		<div class="user">
+			<div class="ui compact notif menu">
+			  <a class="item">
+				<i class="mail large icon"></i>
+				<span class="circular floating ui small red label"> 2 </span>
+			  </a>
+			</div>
+			<div class="ui inline labeled icon top right pointing dropdown">
+			<img class="ui avatar image" src="resource/images/avatar-default.gif">
+			asd
+			<i class="dropdown icon"></i>
+				<div class="menu">
+					<a class="item" href="http://www.yeelink.net"><i class="reply mail icon"></i>asd</a>
+					<a class="item" href="/user/logout"><i class="sign out icon"></i>asd</a>
+				</div>
+			</div>
+		</div>
+	</div>  
+</header>  
+<div class="ui teal inverted menu">
+	<div class="bigcontainer">
+		<div class="right menu">
+<% for (var i in theme.menu) { %>
+<a class="item" href="<%- root_for(theme.menu[i]) %>"><%= i %></a>
+<% } %>
+			
+		</div>
+	</div>
+</div>

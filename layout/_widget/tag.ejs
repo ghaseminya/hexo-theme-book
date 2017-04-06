@@ -1,0 +1,12 @@
+<% if (site.tags.length){ %>
+<div class="verticalMenu">
+	<p class="asidetitle"><%= __('tags') %></p>
+		<div class="ui vertical pointing menu fluid">
+		<% site.tags.sort('posts.length','desc').limit(20).each(function(item){ %>
+			<% if(item.posts.length){ %>
+				<a class="item" href="<%- config.root %><%- item.path %>" title="<%= item.name %>"><%= item.name %><sup><%= item.posts.length %></sup></a>
+			<% } %>
+		<% }); %>
+		</div>
+</div>
+<% } %>
